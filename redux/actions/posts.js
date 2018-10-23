@@ -2,6 +2,7 @@ import {
   POSTS_FETCH_DATA,
   POSTS_IS_LOADING,
   POSTS_HAS_ERROR,
+  POSTS_INCREMENT_NUM_OF_CLICKS,
   API,
 } from './types';
 import { api } from './api';
@@ -23,26 +24,21 @@ export const postsHasError = bool => ({
   hasError: bool,
 });
 
-export const postsGetData = () => postsFetchData([
-  {
-    id   : 1,
-    title: 'post 1',
-  },
-  {
-    id   : 2,
-    title: 'post 2',
-  },
-]);
-/* export const postsGetData = () => (api({
+export const postsGetData = () => (api({
   type   : API,
   payload: {
     url: {
-      base    : config.app.api_url,
-      endpoint: '/posts',
+      base    : 'https://jsonplaceholder.typicode.com',
+      endpoint: '/todos',
     },
     method : 'get',
     success: data => postsFetchData(data),
     failure: data => postsHasError(true),
     loader : bool => postsIsLoading(bool),
   },
-})); */
+}));
+
+
+export const postsInceremntNumOfClicks = () => ({
+  type: POSTS_INCREMENT_NUM_OF_CLICKS,
+});

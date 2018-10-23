@@ -6,6 +6,7 @@ import NodeService from '../../util/node-service';
 import { INITIAL_STATE } from '../../common/app-const';
 import rootReducer from '../reducers/root-reducer';
 import api from '../middlewares/api';
+import clicks from '../middlewares/clicks';
 
 /**
  * Determine which Redux store to provide based on the
@@ -16,6 +17,7 @@ import api from '../middlewares/api';
 const middlewares = [
   thunk,
   api,
+  clicks,
 ];
 
 middlewares.push(NodeService.isProduction() ? RavenMiddleware('sentry_dsn') : logger);

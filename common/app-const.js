@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const INITIAL_STATE = {
   auth: {
     loggedIn: false,
@@ -10,7 +12,8 @@ export const INITIAL_STATE = {
   },
   posts: {
     data     : {},
-    isLoading: true,
+    isLoading: false,
     hasError : false,
+    numOfClicks : 0,
   },
 };

@@ -3,6 +3,7 @@ import {
   POSTS_FETCH_DATA,
   POSTS_IS_LOADING,
   POSTS_HAS_ERROR,
+  POSTS_INCREMENT_NUM_OF_CLICKS,
 } from '../actions/types';
 
 const posts = (state = INITIAL_STATE.posts, action) => {
@@ -15,6 +16,9 @@ const posts = (state = INITIAL_STATE.posts, action) => {
     }
     case POSTS_HAS_ERROR: {
       return { ...state, hasError: action.hasError };
+    }
+    case POSTS_INCREMENT_NUM_OF_CLICKS: {
+      return { ...state, numOfClicks: state.numOfClicks + 1 };
     }
     default: {
       return state;

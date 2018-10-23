@@ -11,7 +11,7 @@ import page from '../../hocs/page';
 // libs
 import NodeService from '../../util/node-service';
 // actions
-import { postsGetData } from '../../redux/actions/posts';
+import { postsGetData, postsInceremntNumOfClicks } from '../../redux/actions/posts';
 // components
 import Post from '../../components/Posts/Post';
 // styles
@@ -21,7 +21,9 @@ import styles from './home.scss';
 
 class Home extends React.Component {
   render() {
-    const { user, posts, t } = this.props;
+    const {
+      user, posts, t, postsInceremntNumOfClicks,
+    } = this.props;
     const { data, isLoading, hasError } = posts;
     return (
       <React.Fragment>
@@ -30,7 +32,14 @@ class Home extends React.Component {
         </Head>
         <Row>
           <Col sm xs={12} >
-            {data.map(post => <Post data={post} onClick={data => console.log(data)} />)}
+            {isLoading && 'loading'}
+            {data.map(post => (<Post
+              data={post}
+              onClick={(data) => {
+              console.log(data);
+              postsInceremntNumOfClicks();
+              }}
+            />))}
           </Col>
         </Row>
       </React.Fragment>
@@ -58,7 +67,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postsGetData: data => dispatch(postsGetData(data)),
+  postsGetData             : data => dispatch(postsGetData(data)),
+  postsInceremntNumOfClicks: () => dispatch(postsInceremntNumOfClicks()),
 });
 
 export default withRedux(configureStore, mapStateToProps, mapDispatchToProps)(page(translate(['common'])(Home)));

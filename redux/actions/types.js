@@ -8,5 +8,6 @@ export const USER_GET_DATA = 'USER_GET_DATA';
 export const POSTS_FETCH_DATA = 'POSTS_FETCH_DATA';
 export const POSTS_IS_LOADING = 'POSTS_IS_LOADING';
 export const POSTS_HAS_ERROR = 'POSTS_HAS_ERROR';
+export const POSTS_INCREMENT_NUM_OF_CLICKS = 'POSTS_INCREMENT_NUM_OF_CLICKS';
 // api
 export const API = 'API';
